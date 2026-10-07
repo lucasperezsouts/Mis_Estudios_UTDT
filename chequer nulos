@@ -1,0 +1,8 @@
+print("Cuántas filas de Villa Soldati hay en la muestra de 2000:")
+print(muestra["barrio_Villa Soldati"].sum())
+
+print("\nCuántas hay en TODO el X_test:")
+print(X_test_df["barrio_Villa Soldati"].sum())
+
+print("\nProporción en el dataset completo:")
+print(df_modelo["barrio"].value_counts(normalize=True).get("Villa Soldati", 0) * 100, "%")

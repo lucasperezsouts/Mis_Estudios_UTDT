@@ -1,0 +1,20 @@
+import pandas as pd
+
+df = pd.read_csv("properati_features_clean_dedup.csv", low_memory=False)
+
+features_numericas = [
+    "surface_total", "surface_covered", "rooms", "bedrooms", "bathrooms",
+    "ratio_cubierta", "dist_centro_km", "inc_uva_21", "uni_edif_1", "fot_em_1"
+]
+features_categoricas = ["barrio", "property_type"]
+target = "log_price"
+
+print("=== NaN por columna (de las usadas en el modelo) ===")
+for col in features_numericas + features_categoricas + [target]:
+    n_nan = df[col].isna().sum()
+    pct = n_nan / len(df) * 100
+    print(f"{col:20s}: {n_nan:6d} nulos ({pct:.1f}%)")
+    features_numericas = [
+    "surface_total", "surface_covered", "rooms", "bathrooms",  # sacamos bedrooms
+    "ratio_cubierta", "dist_centro_km", "inc_uva_21", "uni_edif_1", "fot_em_1"
+]
